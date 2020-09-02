@@ -1,0 +1,25 @@
+Assignment 1 Grading Rubrics
+---------------------------------------
+
+3 Movie Names  (mandatory) (else -5)
+One common word between any two movie names after CF and SWR 
+
+Case Folding   (1)
+Stop Word Removal  (1)
+
+3-gram non-positional inverted index (3)
+	 All 3 grams mentioned, 
+	dictionary is ordered, 
+	document freq is specified, 
+	postings list is ordered 
+permuterm non-positional inverted index - Same as above with permuterms. (3)
+Comparison with wild-card queries (2)
+	
+
+Feedback
+---------
+Do you need $hello and hello$ in permuterm index?
+Include document frequency in inverted index. 
+Order the index terms.
+Do we need to index stop words?
+Neccessity of post-filtering step causes overhead in the case of k-gram index usage.

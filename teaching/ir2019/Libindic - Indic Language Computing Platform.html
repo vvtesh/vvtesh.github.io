@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://libindic.org/Soundex -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title> Libindic - Indic Language Computing Platform </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Indian Language Computing Platform">
+    <meta name="author" content="Libindic Developers">
+
+    <link href="./Libindic - Indic Language Computing Platform_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Libindic - Indic Language Computing Platform_files/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Libindic - Indic Language Computing Platform_files/jquery.ime.css">
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top silpa-navbar" role="navigation">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="https://libindic.org/"> Libindic</a></li>
+          
+            <li><a href="https://libindic.org/Soundex#">Soundex</a></li>
+          
+        </ul>
+        <ul class="nav navbar-nav pull-right hidden-xs">
+          <li><a href="http://silpa.rtfd.org/">Documentation</a></li>
+        </ul>
+      </div> <!-- container -->
+    </div> <!-- navbar -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="sidebar-nav">
+            <!-- side bar goes here -->
+            <ul class="nav nav-tabs nav-stacked" role="navigation">
+              <li class="navbar-brand">Applications</li>
+              
+              <li><a href="https://libindic.org/ApproxSearch">ApproxSearch</a></li>
+              
+              <li><a href="https://libindic.org/Transliteration">Transliteration</a></li>
+              
+              <li><a href="https://libindic.org/Shingling">Shingling</a></li>
+              
+              <li><a href="https://libindic.org/Similar%20Texts">Similar Texts</a></li>
+              
+              <li><a href="https://libindic.org/Hyphenate">Hyphenate</a></li>
+              
+              <li><a href="https://libindic.org/UCA%20Sort">UCA Sort</a></li>
+              
+              <li><a href="https://libindic.org/Fortune">Fortune</a></li>
+              
+              <li><a href="https://libindic.org/SpellCheck">SpellCheck</a></li>
+              
+              <li><a href="https://libindic.org/Syllabalizer">Syllabalizer</a></li>
+              
+              <li><a href="https://libindic.org/Stemmer">Stemmer</a></li>
+              
+              <li><a href="https://libindic.org/Payyans">Payyans</a></li>
+              
+              <li><a href="https://libindic.org/Chardetails">Chardetails</a></li>
+              
+              <li><a href="https://libindic.org/Katapayadi%20Numbers">Katapayadi Numbers</a></li>
+              
+              <li><a href="https://libindic.org/Soundex">Soundex</a></li>
+              
+              <li><a href="https://libindic.org/N-gram">N-gram</a></li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <!-- Main body goes here -->
+          
+<div class="page-header">
+    <h1>Indic Soundex</h1>
+</div>
+
+<p>Soundex Phonetic Code Algorithm Demo for Indian Languages. Supports all indian languages and English. Provides
+    intra-indic string comparison</p>
+
+<ul>
+    <li><a href="http://thottingal.in/blog/2009/07/26/indicsoundex/">Read More about the algorithm </a></li>
+    <li><a href="https://libindic.org/apis.html#soundex">Read about the JSON-RPC based APIs of SILPA for this service </a></li>
+</ul>
+
+<form id="soundex_form" action="https://libindic.org/Soundex" method="post">
+    <div class="help-block">To get the soundex code for a word enter a word in the text box and press Soundex button.</div>
+
+    <div class="form-group">
+        <div class="form-group col-sm-3">
+            <input type="text" name="word1" class="form-control ime">
+        </div>
+        <input type="button" value="Soundex" class="btn btn-default" id="button1">
+    </div>
+    <div id="soundex1" class="alert alert-info silpa-hide" style="display: block;">m5</div>
+
+    <div class="form-group">
+        <div class="form-group col-sm-3">
+            <input type="text" name="word2" class="form-control ime">
+        </div>
+        <input type="button" value="Soundex" class="btn btn-default" id="button2">
+    </div>
+    <div id="soundex2" class="alert alert-info silpa-hide" style="display: block;">m5</div>
+
+
+    <div class="form-group">
+        <p class="help-block">To compare two words, enter the words in the above text boxes and press Compare button.</p>
+        <input type="submit" id="compare" value="Compare" class="btn btn-default">
+    </div>
+</form>
+
+<div id="progress" class="alert alert-info silpa-hide" style="display: none;">Processing. Please Wait..</div>
+<div id="errormessage" class="alert alert-danger silpa-hide" style="display: none;"></div>
+<div id="result" class="alert alert-success silpa-hide"></div>
+<hr>
+
+<div class="well">
+    <h3>Python Soundex API</h3>
+    <p>
+        This service provides indic soundex algorithm based soundex codes for a word
+        </p><ul>
+            <li>Method: modules.Soundex.soundex
+                <ul>
+                    <li>arg1 : the word</li>
+                    <li>Return : The soundex code for the word</li>
+                </ul>
+            </li>
+            <li>Method: modules.Soundex.compare
+                <ul>
+                    <li>arg1 : first word</li>
+                    <li>arg2 : second word</li>
+                    <li>Return : Returns 0 if both strings are same, 1 if strings
+                        sound phonetically same and from same language, 2 if strings are
+                        phonetically same and from different languages.
+                        Returns -1 if strings are not equal.</li>
+                </ul>
+            </li>
+        </ul>
+
+        Sample usage is given below.
+        <pre>      &gt;&gt;&gt;print libindic.soundex.soundex("കാര്‍ത്തിക്")
+      കAPKKBF0
+      &gt;&gt;&gt;print libindic.soundex.compare("കാര്‍ത്തിക്","கார்திக்")
+      2</pre>
+    <p></p>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <p>All rights reserved. © 2008-2019, Libindic Team</p>
+        <p>Code licensed under <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html" target="_blank">GNU Affero General Public License.</a></p>
+        <ul class="footer-links">
+          <li><a href="https://github.com/libindic/libindic-web">Source Code</a></li>
+          <li class="muted">·</li>
+          <li><a href="http://lists.nongnu.org/mailman/listinfo/silpa-discuss">Mailing List</a></li>
+          <li class="muted">·</li>
+          <li><a href="https://libindic.org/Credits">Credits</a></li>
+          <li class="muted">·</li>
+          <li><a href="https://libindic.org/License">License</a></li>
+          <li class="muted">·</li>
+          <li><a href="https://libindic.org/Contact">Contact</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Lets make page load fast -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="./Libindic - Indic Language Computing Platform_files/jquery.js.download"></script>
+    <script src="./Libindic - Indic Language Computing Platform_files/bootstrap.min.js.download"></script>
+    <script src="./Libindic - Indic Language Computing Platform_files/jquery.ime.js.download"></script>
+    <!-- script from module -->
+    
+<script type="text/javascript">
+    $(document).ready(  () => {
+        $("form").submit( (event) => {
+            event.preventDefault();
+            var id_result = $('#result'),
+                id_error = $('#errormessage'),
+                id_progress = $('#progress'),
+                word1 = $("input[name=word1]", 'form').val(),
+                word2 = $("input[name=word2]", 'form').val(),
+                jsonRequest = {
+                    "module": "libindic.soundex",
+                    "method": "compare",
+                    "params": [word1, word2],
+                    "id": ""
+                },
+                messages = {
+                    "-1": "Words does not match",
+                    "0": "Both words are same",
+                    "1": "Both words are from same language and sounds alike",
+                    "2": "Words are from different language but sounds alike"
+                };
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "api",
+                data: JSON.stringify(jsonRequest),
+                dataType: "json",
+                beforeSend: function () {
+                    id_result.hide();
+                    id_error.hide();
+                    id_progress.html("Processing. Please Wait..").show();
+                },
+                success: function (response) {
+                    id_progress.hide();
+                    id_result.html(messages[response.result]).show();
+                },
+                error: function (msg) {
+                    id_progress.hide();
+                    id_error.html("Something went wrong. Please try again!").show();
+                }
+            });
+        });
+
+        $("input[type=button]", 'form').click(function (e) {
+            var id_clicked = e.target.id.split("button")[1],
+                id_error = $('#errormessage'),
+                id_progress = $('#progress'),
+                jsonRequest = {
+                    "module": "libindic.soundex",
+                    "method": "soundex",
+                    "params": [
+                        $("input[name=word" + id_clicked + "]", 'form').val()
+                    ],
+                    "id": ""
+                };
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "api",
+                data: JSON.stringify(jsonRequest),
+                dataType: "json",
+                beforeSend: function () {
+                    id_error.hide();
+                    id_progress.html("Processing. Please Wait..").show();
+                },
+                success: function (msg) {
+                    id_progress.hide();
+                    $('#soundex' + id_clicked).html(msg.result).show();
+                },
+                error: function (msg) {
+                    id_progress.hide();
+                    id_error.html("Something went wrong. Please try again!").show();
+                }
+            });
+        });
+    });
+</script>
+
+    <script>
+      $( document ).ready( function () {
+        $('.ime').ime({'imePath':'static/'});
+      } );
+    </script>
+  
+<div class="imeselector imeselector-toggle" style="display: none; top: 343px; left: 554px; opacity: 1; margin-top: 0px;"><a class="ime-name imeselector-toggle" href="https://libindic.org/Soundex#"></a><b class="ime-setting-caret imeselector-toggle"></b><div class="imeselector-menu" role="menu" style=""><h3 class="ime-list-title">English</h3><ul class="ime-list"><li data-ime-inputmethod="ipa-sil" class="ime-im selectable-row"><span class="ime-im-check"></span><a href="https://libindic.org/Soundex#" class="selectable-row-item">International Phonetic Alphabet - SIL</a></li><li data-ime-inputmethod="ipa-x-sampa" class="ime-im selectable-row"><span class="ime-im-check"></span><a href="https://libindic.org/Soundex#" class="selectable-row-item">International Phonetic Alphabet - X-SAMPA</a></li></ul><div class="ime-disable selectable-row ime-checked"><span class="ime-disable-link" data-i18n="jquery-ime-disable-text">System input method</span><span class="ime-disable-shortcut">CTRL+M</span></div><h3 class="ime-lang-title" data-i18n="jquery-ime-other-languages">Other languages</h3><div class="ime-language-list-wrapper"><ul class="ime-language-list"><li class="ime-lang selectable-row" lang="ady"><a href="https://libindic.org/Soundex#" class="selectable-row-item">адыгэбзэ</a></li><li class="ime-lang selectable-row" lang="ahr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">अहिराणी</a></li><li class="ime-lang selectable-row" lang="am"><a href="https://libindic.org/Soundex#" class="selectable-row-item">አማርኛ</a></li><li class="ime-lang selectable-row" lang="ar"><a href="https://libindic.org/Soundex#" class="selectable-row-item">العربية</a></li><li class="ime-lang selectable-row" lang="as"><a href="https://libindic.org/Soundex#" class="selectable-row-item">অসমীয়া</a></li><li class="ime-lang selectable-row" lang="av"><a href="https://libindic.org/Soundex#" class="selectable-row-item">авар</a></li><li class="ime-lang selectable-row" lang="be"><a href="https://libindic.org/Soundex#" class="selectable-row-item">беларуская</a></li><li class="ime-lang selectable-row" lang="be-tarask"><a href="https://libindic.org/Soundex#" class="selectable-row-item">беларуская (тарашкевіца)</a></li><li class="ime-lang selectable-row" lang="bh"><a href="https://libindic.org/Soundex#" class="selectable-row-item">भोजपुरी</a></li><li class="ime-lang selectable-row" lang="bho"><a href="https://libindic.org/Soundex#" class="selectable-row-item">भोजपुरी</a></li><li class="ime-lang selectable-row" lang="bn"><a href="https://libindic.org/Soundex#" class="selectable-row-item">বাংলা</a></li><li class="ime-lang selectable-row" lang="brx"><a href="https://libindic.org/Soundex#" class="selectable-row-item">बोड़ो</a></li><li class="ime-lang selectable-row" lang="ckb"><a href="https://libindic.org/Soundex#" class="selectable-row-item">کوردی</a></li><li class="ime-lang selectable-row" lang="ce"><a href="https://libindic.org/Soundex#" class="selectable-row-item">нохчийн</a></li><li class="ime-lang selectable-row" lang="cv"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Чăвашла</a></li><li class="ime-lang selectable-row" lang="da"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Dansk</a></li><li class="ime-lang selectable-row" lang="de"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Deutsch</a></li><li class="ime-lang selectable-row" lang="diq"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Kirdkî</a></li><li class="ime-lang selectable-row" lang="doi"><a href="https://libindic.org/Soundex#" class="selectable-row-item">डोगरी</a></li><li class="ime-lang selectable-row" lang="en" style="display: none;"><a href="https://libindic.org/Soundex#" class="selectable-row-item">English</a></li><li class="ime-lang selectable-row" lang="el"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Ελληνικά</a></li><li class="ime-lang selectable-row" lang="eo"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Esperanto</a></li><li class="ime-lang selectable-row" lang="fa"><a href="https://libindic.org/Soundex#" class="selectable-row-item">فارسی</a></li><li class="ime-lang selectable-row" lang="fo"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Føroyskt</a></li><li class="ime-lang selectable-row" lang="fi"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Suomi</a></li><li class="ime-lang selectable-row" lang="gom"><a href="https://libindic.org/Soundex#" class="selectable-row-item">कोंकणी</a></li><li class="ime-lang selectable-row" lang="gu"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ગુજરાતી</a></li><li class="ime-lang selectable-row" lang="he"><a href="https://libindic.org/Soundex#" class="selectable-row-item">עברית</a></li><li class="ime-lang selectable-row" lang="hi"><a href="https://libindic.org/Soundex#" class="selectable-row-item">हिन्दी</a></li><li class="ime-lang selectable-row" lang="hr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Hrvatski</a></li><li class="ime-lang selectable-row" lang="hy"><a href="https://libindic.org/Soundex#" class="selectable-row-item">հայերեն</a></li><li class="ime-lang selectable-row" lang="hne"><a href="https://libindic.org/Soundex#" class="selectable-row-item">छत्तीसगढ़ी</a></li><li class="ime-lang selectable-row" lang="is"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Íslenska</a></li><li class="ime-lang selectable-row" lang="fonipa"><a href="https://libindic.org/Soundex#" class="selectable-row-item">International Phonetic Alphabet</a></li><li class="ime-lang selectable-row" lang="jv"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ꦧꦱꦗꦮ</a></li><li class="ime-lang selectable-row" lang="ka"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ქართული ენა</a></li><li class="ime-lang selectable-row" lang="kbd"><a href="https://libindic.org/Soundex#" class="selectable-row-item">адыгэбзэ (къэбэрдеибзэ)</a></li><li class="ime-lang selectable-row" lang="kk"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Қазақша</a></li><li class="ime-lang selectable-row" lang="kn"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ಕನ್ನಡ</a></li><li class="ime-lang selectable-row" lang="ks"><a href="https://libindic.org/Soundex#" class="selectable-row-item">कॉशुर / کٲشُر</a></li><li class="ime-lang selectable-row" lang="ky"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Кыргыз</a></li><li class="ime-lang selectable-row" lang="kab"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ⵜⴰⵇⴱⴰⵢⵍⵉⵜ</a></li><li class="ime-lang selectable-row" lang="ku"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Kurdî</a></li><li class="ime-lang selectable-row" lang="lbe"><a href="https://libindic.org/Soundex#" class="selectable-row-item">лакку</a></li><li class="ime-lang selectable-row" lang="lez"><a href="https://libindic.org/Soundex#" class="selectable-row-item">лезги</a></li><li class="ime-lang selectable-row" lang="lo"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ລາວ</a></li><li class="ime-lang selectable-row" lang="mai"><a href="https://libindic.org/Soundex#" class="selectable-row-item">मैथिली</a></li><li class="ime-lang selectable-row" lang="mh"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Kajin M̧ajeļ</a></li><li class="ime-lang selectable-row" lang="ml"><a href="https://libindic.org/Soundex#" class="selectable-row-item">മലയാളം</a></li><li class="ime-lang selectable-row" lang="mn"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Монгол</a></li><li class="ime-lang selectable-row" lang="mni"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Manipuri</a></li><li class="ime-lang selectable-row" lang="mr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">मराठी</a></li><li class="ime-lang selectable-row" lang="my"><a href="https://libindic.org/Soundex#" class="selectable-row-item">မြန်မာ</a></li><li class="ime-lang selectable-row" lang="ne"><a href="https://libindic.org/Soundex#" class="selectable-row-item">नेपाली</a></li><li class="ime-lang selectable-row" lang="new"><a href="https://libindic.org/Soundex#" class="selectable-row-item">नेपाल भाषा</a></li><li class="ime-lang selectable-row" lang="nb"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Norsk (bokmål)</a></li><li class="ime-lang selectable-row" lang="nn"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Norsk (nynorsk)</a></li><li class="ime-lang selectable-row" lang="or"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ଓଡ଼ିଆ</a></li><li class="ime-lang selectable-row" lang="pa"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ਪੰਜਾਬੀ</a></li><li class="ime-lang selectable-row" lang="rif"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ⵜⴰⵔⵉⴼⵉⵜ</a></li><li class="ime-lang selectable-row" lang="ru"><a href="https://libindic.org/Soundex#" class="selectable-row-item">русский</a></li><li class="ime-lang selectable-row" lang="sah"><a href="https://libindic.org/Soundex#" class="selectable-row-item">саха тыла</a></li><li class="ime-lang selectable-row" lang="sa"><a href="https://libindic.org/Soundex#" class="selectable-row-item">संस्कृत</a></li><li class="ime-lang selectable-row" lang="sat"><a href="https://libindic.org/Soundex#" class="selectable-row-item">संताली</a></li><li class="ime-lang selectable-row" lang="sd"><a href="https://libindic.org/Soundex#" class="selectable-row-item">सिंधी</a></li><li class="ime-lang selectable-row" lang="se"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Davvisámegiella</a></li><li class="ime-lang selectable-row" lang="shi"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ⵜⴰⵛⵍⵃⵉⵜ</a></li><li class="ime-lang selectable-row" lang="si"><a href="https://libindic.org/Soundex#" class="selectable-row-item">සිංහල</a></li><li class="ime-lang selectable-row" lang="sk"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Slovenčina</a></li><li class="ime-lang selectable-row" lang="sr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Српски / srpski</a></li><li class="ime-lang selectable-row" lang="sv"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Svenska</a></li><li class="ime-lang selectable-row" lang="ta"><a href="https://libindic.org/Soundex#" class="selectable-row-item">தமிழ்</a></li><li class="ime-lang selectable-row" lang="tcy"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ತುಳು</a></li><li class="ime-lang selectable-row" lang="te"><a href="https://libindic.org/Soundex#" class="selectable-row-item">తెలుగు</a></li><li class="ime-lang selectable-row" lang="th"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ไทย</a></li><li class="ime-lang selectable-row" lang="tkr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">цӀаӀхна миз</a></li><li class="ime-lang selectable-row" lang="tzm"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ⵜⴰⵎⴰⵣⵉⵖⵜ</a></li><li class="ime-lang selectable-row" lang="udm"><a href="https://libindic.org/Soundex#" class="selectable-row-item">удмурт</a></li><li class="ime-lang selectable-row" lang="uk"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Українська</a></li><li class="ime-lang selectable-row" lang="ug"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ئۇيغۇرچە / Uyghurche</a></li><li class="ime-lang selectable-row" lang="ur"><a href="https://libindic.org/Soundex#" class="selectable-row-item">اردو</a></li><li class="ime-lang selectable-row" lang="uz"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Oʻzbekcha</a></li></ul></div><div class="ime-help-link selectable-row"><a class="selectable-row-item" href="http://github.com/wikimedia/jquery.ime" target="_blank" data-i18n="jquery-ime-help">Help</a></div></div></div><div class="imeselector imeselector-toggle" style="display: none; top: 464px; left: 554px; opacity: 1; margin-top: 0px;"><a class="ime-name imeselector-toggle" href="https://libindic.org/Soundex#"></a><b class="ime-setting-caret imeselector-toggle"></b><div class="imeselector-menu" role="menu" style=""><h3 class="ime-list-title">English</h3><ul class="ime-list"><li data-ime-inputmethod="ipa-sil" class="ime-im selectable-row"><span class="ime-im-check"></span><a href="https://libindic.org/Soundex#" class="selectable-row-item">International Phonetic Alphabet - SIL</a></li><li data-ime-inputmethod="ipa-x-sampa" class="ime-im selectable-row"><span class="ime-im-check"></span><a href="https://libindic.org/Soundex#" class="selectable-row-item">International Phonetic Alphabet - X-SAMPA</a></li></ul><div class="ime-disable selectable-row ime-checked"><span class="ime-disable-link" data-i18n="jquery-ime-disable-text">System input method</span><span class="ime-disable-shortcut">CTRL+M</span></div><h3 class="ime-lang-title" data-i18n="jquery-ime-other-languages">Other languages</h3><div class="ime-language-list-wrapper"><ul class="ime-language-list"><li class="ime-lang selectable-row" lang="ady"><a href="https://libindic.org/Soundex#" class="selectable-row-item">адыгэбзэ</a></li><li class="ime-lang selectable-row" lang="ahr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">अहिराणी</a></li><li class="ime-lang selectable-row" lang="am"><a href="https://libindic.org/Soundex#" class="selectable-row-item">አማርኛ</a></li><li class="ime-lang selectable-row" lang="ar"><a href="https://libindic.org/Soundex#" class="selectable-row-item">العربية</a></li><li class="ime-lang selectable-row" lang="as"><a href="https://libindic.org/Soundex#" class="selectable-row-item">অসমীয়া</a></li><li class="ime-lang selectable-row" lang="av"><a href="https://libindic.org/Soundex#" class="selectable-row-item">авар</a></li><li class="ime-lang selectable-row" lang="be"><a href="https://libindic.org/Soundex#" class="selectable-row-item">беларуская</a></li><li class="ime-lang selectable-row" lang="be-tarask"><a href="https://libindic.org/Soundex#" class="selectable-row-item">беларуская (тарашкевіца)</a></li><li class="ime-lang selectable-row" lang="bh"><a href="https://libindic.org/Soundex#" class="selectable-row-item">भोजपुरी</a></li><li class="ime-lang selectable-row" lang="bho"><a href="https://libindic.org/Soundex#" class="selectable-row-item">भोजपुरी</a></li><li class="ime-lang selectable-row" lang="bn"><a href="https://libindic.org/Soundex#" class="selectable-row-item">বাংলা</a></li><li class="ime-lang selectable-row" lang="brx"><a href="https://libindic.org/Soundex#" class="selectable-row-item">बोड़ो</a></li><li class="ime-lang selectable-row" lang="ckb"><a href="https://libindic.org/Soundex#" class="selectable-row-item">کوردی</a></li><li class="ime-lang selectable-row" lang="ce"><a href="https://libindic.org/Soundex#" class="selectable-row-item">нохчийн</a></li><li class="ime-lang selectable-row" lang="cv"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Чăвашла</a></li><li class="ime-lang selectable-row" lang="da"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Dansk</a></li><li class="ime-lang selectable-row" lang="de"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Deutsch</a></li><li class="ime-lang selectable-row" lang="diq"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Kirdkî</a></li><li class="ime-lang selectable-row" lang="doi"><a href="https://libindic.org/Soundex#" class="selectable-row-item">डोगरी</a></li><li class="ime-lang selectable-row" lang="en" style="display: none;"><a href="https://libindic.org/Soundex#" class="selectable-row-item">English</a></li><li class="ime-lang selectable-row" lang="el"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Ελληνικά</a></li><li class="ime-lang selectable-row" lang="eo"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Esperanto</a></li><li class="ime-lang selectable-row" lang="fa"><a href="https://libindic.org/Soundex#" class="selectable-row-item">فارسی</a></li><li class="ime-lang selectable-row" lang="fo"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Føroyskt</a></li><li class="ime-lang selectable-row" lang="fi"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Suomi</a></li><li class="ime-lang selectable-row" lang="gom"><a href="https://libindic.org/Soundex#" class="selectable-row-item">कोंकणी</a></li><li class="ime-lang selectable-row" lang="gu"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ગુજરાતી</a></li><li class="ime-lang selectable-row" lang="he"><a href="https://libindic.org/Soundex#" class="selectable-row-item">עברית</a></li><li class="ime-lang selectable-row" lang="hi"><a href="https://libindic.org/Soundex#" class="selectable-row-item">हिन्दी</a></li><li class="ime-lang selectable-row" lang="hr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Hrvatski</a></li><li class="ime-lang selectable-row" lang="hy"><a href="https://libindic.org/Soundex#" class="selectable-row-item">հայերեն</a></li><li class="ime-lang selectable-row" lang="hne"><a href="https://libindic.org/Soundex#" class="selectable-row-item">छत्तीसगढ़ी</a></li><li class="ime-lang selectable-row" lang="is"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Íslenska</a></li><li class="ime-lang selectable-row" lang="fonipa"><a href="https://libindic.org/Soundex#" class="selectable-row-item">International Phonetic Alphabet</a></li><li class="ime-lang selectable-row" lang="jv"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ꦧꦱꦗꦮ</a></li><li class="ime-lang selectable-row" lang="ka"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ქართული ენა</a></li><li class="ime-lang selectable-row" lang="kbd"><a href="https://libindic.org/Soundex#" class="selectable-row-item">адыгэбзэ (къэбэрдеибзэ)</a></li><li class="ime-lang selectable-row" lang="kk"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Қазақша</a></li><li class="ime-lang selectable-row" lang="kn"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ಕನ್ನಡ</a></li><li class="ime-lang selectable-row" lang="ks"><a href="https://libindic.org/Soundex#" class="selectable-row-item">कॉशुर / کٲشُر</a></li><li class="ime-lang selectable-row" lang="ky"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Кыргыз</a></li><li class="ime-lang selectable-row" lang="kab"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ⵜⴰⵇⴱⴰⵢⵍⵉⵜ</a></li><li class="ime-lang selectable-row" lang="ku"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Kurdî</a></li><li class="ime-lang selectable-row" lang="lbe"><a href="https://libindic.org/Soundex#" class="selectable-row-item">лакку</a></li><li class="ime-lang selectable-row" lang="lez"><a href="https://libindic.org/Soundex#" class="selectable-row-item">лезги</a></li><li class="ime-lang selectable-row" lang="lo"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ລາວ</a></li><li class="ime-lang selectable-row" lang="mai"><a href="https://libindic.org/Soundex#" class="selectable-row-item">मैथिली</a></li><li class="ime-lang selectable-row" lang="mh"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Kajin M̧ajeļ</a></li><li class="ime-lang selectable-row" lang="ml"><a href="https://libindic.org/Soundex#" class="selectable-row-item">മലയാളം</a></li><li class="ime-lang selectable-row" lang="mn"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Монгол</a></li><li class="ime-lang selectable-row" lang="mni"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Manipuri</a></li><li class="ime-lang selectable-row" lang="mr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">मराठी</a></li><li class="ime-lang selectable-row" lang="my"><a href="https://libindic.org/Soundex#" class="selectable-row-item">မြန်မာ</a></li><li class="ime-lang selectable-row" lang="ne"><a href="https://libindic.org/Soundex#" class="selectable-row-item">नेपाली</a></li><li class="ime-lang selectable-row" lang="new"><a href="https://libindic.org/Soundex#" class="selectable-row-item">नेपाल भाषा</a></li><li class="ime-lang selectable-row" lang="nb"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Norsk (bokmål)</a></li><li class="ime-lang selectable-row" lang="nn"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Norsk (nynorsk)</a></li><li class="ime-lang selectable-row" lang="or"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ଓଡ଼ିଆ</a></li><li class="ime-lang selectable-row" lang="pa"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ਪੰਜਾਬੀ</a></li><li class="ime-lang selectable-row" lang="rif"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ⵜⴰⵔⵉⴼⵉⵜ</a></li><li class="ime-lang selectable-row" lang="ru"><a href="https://libindic.org/Soundex#" class="selectable-row-item">русский</a></li><li class="ime-lang selectable-row" lang="sah"><a href="https://libindic.org/Soundex#" class="selectable-row-item">саха тыла</a></li><li class="ime-lang selectable-row" lang="sa"><a href="https://libindic.org/Soundex#" class="selectable-row-item">संस्कृत</a></li><li class="ime-lang selectable-row" lang="sat"><a href="https://libindic.org/Soundex#" class="selectable-row-item">संताली</a></li><li class="ime-lang selectable-row" lang="sd"><a href="https://libindic.org/Soundex#" class="selectable-row-item">सिंधी</a></li><li class="ime-lang selectable-row" lang="se"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Davvisámegiella</a></li><li class="ime-lang selectable-row" lang="shi"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ⵜⴰⵛⵍⵃⵉⵜ</a></li><li class="ime-lang selectable-row" lang="si"><a href="https://libindic.org/Soundex#" class="selectable-row-item">සිංහල</a></li><li class="ime-lang selectable-row" lang="sk"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Slovenčina</a></li><li class="ime-lang selectable-row" lang="sr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Српски / srpski</a></li><li class="ime-lang selectable-row" lang="sv"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Svenska</a></li><li class="ime-lang selectable-row" lang="ta"><a href="https://libindic.org/Soundex#" class="selectable-row-item">தமிழ்</a></li><li class="ime-lang selectable-row" lang="tcy"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ತುಳು</a></li><li class="ime-lang selectable-row" lang="te"><a href="https://libindic.org/Soundex#" class="selectable-row-item">తెలుగు</a></li><li class="ime-lang selectable-row" lang="th"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ไทย</a></li><li class="ime-lang selectable-row" lang="tkr"><a href="https://libindic.org/Soundex#" class="selectable-row-item">цӀаӀхна миз</a></li><li class="ime-lang selectable-row" lang="tzm"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ⵜⴰⵎⴰⵣⵉⵖⵜ</a></li><li class="ime-lang selectable-row" lang="udm"><a href="https://libindic.org/Soundex#" class="selectable-row-item">удмурт</a></li><li class="ime-lang selectable-row" lang="uk"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Українська</a></li><li class="ime-lang selectable-row" lang="ug"><a href="https://libindic.org/Soundex#" class="selectable-row-item">ئۇيغۇرچە / Uyghurche</a></li><li class="ime-lang selectable-row" lang="ur"><a href="https://libindic.org/Soundex#" class="selectable-row-item">اردو</a></li><li class="ime-lang selectable-row" lang="uz"><a href="https://libindic.org/Soundex#" class="selectable-row-item">Oʻzbekcha</a></li></ul></div><div class="ime-help-link selectable-row"><a class="selectable-row-item" href="http://github.com/wikimedia/jquery.ime" target="_blank" data-i18n="jquery-ime-help">Help</a></div></div></div></body></html>

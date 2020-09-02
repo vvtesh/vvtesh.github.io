@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks = true, linkcolor = black, citecolor = black, final]{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{52pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\ds}{\displaystyle}
+\lhead{CMI/Aug-Nov 2020/Assignment 1}
+\rhead{Aug 2020}
+
+\title{Information Retrieval - Assignment 1}
+
+\begin{document}
+{\scshape} \hfill {Chennai Mathematical Institute}  \hfill {\scshape}
+
+\bigskip
+
+{\scshape Information Retrieval} \hfill { } \hfill {\scshape Deadline: Sep 07, 2020 11:59 PM IST. Max Marks: 10.}
+
+\bigskip
+
+\hrule
+
+\bigskip
+{\scshape Roll No.: $\rule{4.2cm}{0.15mm}$} \hfill {\scshape}\hfill {\scshape}
+
+\smallskip
+
+{\scshape Name: $\rule{5cm}{0.15mm}$} \hfill {\scshape }\hfill {\scshape}
+
+\bigskip
+
+\smallskip
+
+\bigskip
+
+\hrule
+\smallskip
+Note: You are encouraged to use \LaTeX to typeset your assignment solution. A \LaTeX template is also provided to you which you may import to overleaf.com. 
+\smallskip
+\hrule
+
+\bigskip
+
+\textbf{Question 1 [10 Marks]}: Take any three of your favorite movie names from any source. Each movie name should at least have three words of three or more characters in it. There must be \textbf{at least} one \textbf{common} word between at least any two of these movie names after \textit{case folding} and \textit{stop word} removal. 
+
+Assuming that these movie names form documents in your collection, answer the following questions:
+
+\begin{enumerate}
+    \item Apply case-folding to each movie name.
+    \item To the resulting movie name after case folding, apply stop-word removal.
+    \item Use the resulting movie names after case-folding and stop-word removal to draw the positional inverted index.
+    \item For the same movie names after case-folding and stop-word removal, draw a 2-gram non-positional inverted index.
+    \item Find a query which will result in a false-positive when fired on your 2-gram non-positional index. Explain the reason for our simple retrieval system (as discussed in the class) to result in a false-positive for this query on your 2-gram non-positional index.
+\end{enumerate}
+
+\bigskip
+
+\hrule
+
+\bigskip
+
+\textbf{Answer:}
+
+\bigskip
+
+Movie Name 1: 
+
+After Case Folding: 
+
+After Stop-word Removal:
+
+\bigskip
+
+Movie Name 2:
+
+After Case Folding: 
+
+After Stop-word Removal:
+
+\bigskip
+
+Movie Name 3:
+
+After Case Folding: 
+
+After Stop-word Removal:
+
+\bigskip
+
+Common Word(s) that occurred in movie names before case-folding and stop-word removal: 
+
+\bigskip
+
+Positional Inverted Index:
+
+\vspace*{5cm}
+
+\bigskip
+2-gram Non-positional Inverted Index:
+
+\vspace*{5cm}
+
+\bigskip
+
+Query:
+
+Intent:
+
+Why does this query result in a false-positive on a 2-gram non-positional inverted index?
+
+\bigskip
+
+\vspace*{4cm}
+
+\hrule
+
+~\smallskip{}
+
+\hrule
+
+\end{document}
