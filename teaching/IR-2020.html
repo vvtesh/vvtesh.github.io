@@ -1,10 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- checking -->
 <html>
 <head>
   <title>Information Retrieval</title>
   <link href="portfolio.css" type="text/css" rel="stylesheet">
   	<link href='http://fonts.googleapis.com/css?family=Tangerine|Junge' rel='stylesheet' type='text/css'>
   <style>
+t1{ border: 2px single black; border-collapse: collapse;}
+t2 { border: thin single black collapse }
   	iframe {    
     border: 1px solid white;
 }
@@ -59,9 +62,7 @@ At the end of this course, you should be able to:
 
 <div><font size=4 face="verdana"><strong>Lecture Resources</strong></font> </div>
 <br>
-The lecture schedule of 2019 offering (which was a 2-credit course) is available <a href="IR-2019.html">here</a>.       
-<br><br>
-<table border=1>
+<table border=1 style="border:1px solid grey; border-collapse: separate;">
     
 <tr bgcolor=lightgrey><td>Lecture #</td><td>Topic</td><td>Readings</td><td>Slides/Material</td></tr>
 <tr><td colspan=4 bgcolor=lightgray>Part 1: Building a Search System - An Overview</td></tr>
@@ -71,20 +72,53 @@ The lecture schedule of 2019 offering (which was a 2-credit course) is available
 <tr><td colspan=4><font color=red>Assignment 1 released. Please visit Moodle for details.</font></td></tr>
 <tr><td rowspan=2>4</td><td>Evaluating Retrieval Systems</td><td>Chapter 8 from CPS</td><td><a href=https://youtu.be/BPmlYOVLr0A>[Video]</a><a href=ir2020/slides/Lecture4.pdf>[Slides]</a></td></tr> 
 <tr><td>Tutorial: Lucene Demo</td><td><a href=ir/lecture-lucene.pdf>Lucene Tutorial</a></td><td><a href=https://youtu.be/bhoqWA7KZ9k>[Video]</a><a href=ir/LuceneDemo.zip>[LuceneDemo.zip]</a></td></tr>     
-    
-    
 <tr><td colspan=4><font color=red>Bonus Task 1 released. Please visit Moodle for details. A preview of a bonus task from an earlier course offering is <a href=https://www.youtube.com/watch?v=HAb0rbTVuv4>here</a>.</font></td></tr>
+
 <tr><td colspan=4 bgcolor=lightgray>Part 2: Components of a Retrieval System</td></tr>
 <tr><td colspan=4 bgcolor=lightgray>2.1 Indexing</td></tr>    
-<tr><td>5</td><td>Indexing: Query Processing Order</td><td>Chapter 2 from CPS</td><td><a href=https://youtu.be/_85e3B29pPI>[Video]</a><a href=ir2020/slides/Lecture5.pdf>[Slides]</a></td></tr> 
-<tr><td>6</td><td>Indexing: Challenges</td><td>Chapter 2 from CPS</td><td><a href=https://youtu.be/Oee_H9c_FLE>[Video]</a><a href=ir2020/slides/Lecture6.pdf>[Slides]</a></td></tr> 
+<tr><td>5</td><td>Indexing: Query Processing Order</td><td>Section 1.3 from CPS</td><td><a href=https://youtu.be/_85e3B29pPI>[Video]</a><a href=ir2020/slides/Lecture5.pdf>[Slides]</a></td></tr> 
+<tr><td>6</td><td>Indexing: Challenges</td><td>Chapter 2 from CPS</td><td><a href=https://youtu.be/Oee_H9c_FLE>[Video]</a><a href=ir2020/slides/Lecture6.pdf>[Slides]</a><br><a href=https://youtu.be/stvIgisJ77Y>[Video]</a><a href=ir2020/slides/Lecture6.1.pdf>[Slides]</a><br><a href=https://youtu.be/hAkBchzGSMg>The Power of Indexing</a></td></tr> 
+<tr><td colspan=4><font color=red>Bonus Task 2 released. Please visit Moodle for details.</a></font></td></tr>    
 <tr><td colspan=4 bgcolor=lightgray>2.2 Query Understanding</td></tr>    
 <tr><td>7</td><td>Query Understanding: Segmentation and Spelling Correction</td><td>Chapter 3 from CPS</td><td><a href=https://youtu.be/zV5WPPMDu1s>[Video]</a><a href=ir2020/slides/Lecture7.pdf>[Slides]</a></td></tr> 
-<tr><td>8</td><td>Query Understanding: Phonetic Correction</td><td>Chapter 3 from CPS</td><td><!--<a href=https://youtu.be/Oee_H9c_FLE>[Video]</a><a href=ir2020/slides/Lecture8.pdf>[Slides]</a>--></td></tr>     
+<tr><td>8</td><td>Query Understanding: Phonetic Correction</td><td>Chapter 3 from CPS</td><td><a href=https://www.youtube.com/watch?v=pwulpXQpqQc>[Video]</a><a href=ir2020/slides/PhoneticCorrection.pdf>[Slides]</a><br><a href=https://youtu.be/ys0p1T-X-Ow>Handling Wildcard Queries</a>           <!--<a href=https://youtu.be/Oee_H9c_FLE>[Video]</a><a href=ir2020/slides/Lecture8.pdf>[Slides]</a>--></td></tr>  
+<tr><td colspan=4><font color=red>Assignment 2 released. Please visit Moodle for details.</a></font></td></tr>    
+<tr><td>9</td><td>Tutorial: Solr</td><td></td><td><a href=https://www.youtube.com/watch?v=d4e1SDFoFK8>[Video]</a><a href=ir2020/slides/SolrTutorial.pdf>[Slides]</a><a href=ir2020/slides/SolrTutorial.zip>[Code]</a></td></tr> 
 <tr><td colspan=4 bgcolor=lightgray>2.3 Index Compression</td></tr>    
-<tr><td>9</td><td>Index Compression</td><td>Chapter 5 from CPS</td><td><!--<a href=https://www.youtube.com/watch?v=SU5a4wkWdHg>[Video]</a><a href=ir2020/slides/Lecture9.pdf>[Slides]</a>--></td></tr>     
-
+<tr><td>10</td><td>Index Compression</td><td>Chapter 5 from CPS</td><td><a href=https://www.youtube.com/watch?v=SU5a4wkWdHg>[Video]</a><a href=ir2020/slides/Lecture9.pdf>[Slides]</a></td></tr>     
+<tr><td colspan=4 bgcolor=lightgray>2.4 Crawling</td></tr>    
+<tr><td>11,12</td><td>Crawlers</td><td>Chapter 20 from CPS, Chapter 3 from BDT</td><td><a href=https://www.youtube.com/watch?v=8FO4SbrpQFE>[Video]</a><a href=ir2020/slides/Lecture10.pdf>[Slides]</a><br><a href=https://youtu.be/dluCd06sxdg>Challenges in Web Crawling</a></td></tr>     
+ 
+<tr><td colspan=4><font color=red>Assignment 3 released. Please visit Moodle for details.</a></font></td></tr>    
+<tr><td colspan=4 bgcolor=lightgray>2.5 Relevance and Ranking</td></tr>  
+<tr><td>13</td><td>Scoring and Term-Weighting</td><td>Chapter 6 (Sections 6.2,6.3,6.4) from CPS</td><td><a href=https://youtu.be/Os0ZoQ-0baQ>[Video]</a><a href=ir2020/slides/Lecture12-13.pdf>[Slides]</a></td></tr>     
+<tr><td colspan=4><font color=red>Bonus Task 3 released. Please visit Moodle for details.</a></font></td></tr>    
+<tr><td>14</td><td>Scoring with Zonal Indexes</td><td>Chapter 6 (Section 6.1) from CPS</td><td><a href=https://youtu.be/3p1R8Yr9GWA>[Video]</a><a href=ir2020/slides/Lecture14.pdf>[Slides]</a></td></tr>     
+<tr><td colspan=4><font color=red>Bonus Task 4 released. Please visit Moodle for details.</a></font></td></tr> 
+<tr><td colspan=4><font color=red>Mid-Term Exam</a></font></td></tr> 
+<tr><td colspan=4><font color=red>Bonus Task 5 released. Please visit Moodle for details.</a></font></td></tr> 
+<tr><td>15</td><td>Tutorial: Solr: Analyzers, Tokenizers and Filters</td><td><a href=https://lucene.apache.org/solr/guide/6_6/understanding-analyzers-tokenizers-and-filters.html>Solr Guide</a></td><td><a href=https://youtu.be/LB-GrJglkaQ>[Video]</a><a href="ir2020/slides/SolrTutorial-Analyzer.zip">[Code]</a><br><a href=https://youtu.be/UDLoG0mT1_k>[Demo-Video]</a></td></tr>     
+<tr><td>16</td><td>Efficient Scoring and Ranking</td><td>Chapter 7 from CPS</td><td><a href=https://www.youtube.com/watch?v=XNxzXQa55jQ>[Video]</a><a href=ir2020/slides/Lecture15.pdf>[Slides]</a></td></tr>     
+<tr><td colspan=4><font color=red>Assignment 4 released. Please visit Moodle for details.</a></font></td></tr>    
+<tr><td colspan=4><font color=red>Mini-Project deadlines released. Please visit Moodle for details.</a></font></td></tr>    
+<tr><td colspan=4 bgcolor=lightgray>2.5 Evaluation</td></tr>  
+<tr><td>17,18</td><td>Evaluation</td><td>Chapter 8 from CPS</td><td><a href=https://youtu.be/HIENOZ2HM_I>[Video]</a><a href=ir2020/slides/Lecture16.pdf>[Slides]</a></td></tr>     
+<tr><td colspan=4><font color=red>Bonus Task 6 released. Please visit Moodle for details.</a></font></td></tr> 
 <tr><td colspan=4 bgcolor=lightgray>Part 3: Advanced Topics in Information Retrieval</td></tr>
+<tr><td>19</td><td>Relevance Feedback</td><td>Chapter 9 from CPS</td><td><a href=https://www.youtube.com/watch?v=nQOUx7sqJko>[Video]</a><a href=ir2020/slides/Lecture17.pdf>[Slides]</a></td></tr>  
+<tr><td>20,21</td><td>Probabilistic IR</td><td>Chapter 11 from CPS</td><td><a href=https://www.youtube.com/watch?v=tWE9a7-hT0U>[Video]</a><a href=ir2020/slides/Lecture19-PR.pdf>[Slides]</a></td></tr>     
+<tr><td colspan=4>A shorter video without the revision of first part but with a slightly better explanation of the RSV computation is available here: <a href=https://youtu.be/ERbdnlZT9V0>[Video]</a></td></tr>
+<tr><td>22</td><td>String Handling</td><td></td><td><a href=https://youtu.be/_3lOoTQplfA>[Video]</a><a href=ir2020/slides/Lecture20-StringHandling.pdf>[Slides]</a></td></tr>     
+<tr><td>23</td><td>Popularity of Web Pages - Link Analysis</td><td>Chapter 21 from CPS</td><td><a href=https://www.youtube.com/watch?v=0NpfgE2Aa3Y>[Video]</a><a href=ir2020/slides/Lecture18.pdf>[Slides]</a></td></tr>     
+<tr><td colspan=4><font color=red>Bonus Task 7 released. Please visit Moodle for details.</a></font></td></tr> 
+<tr><td>24,25</td><td>Topics in IR - An Overview</td><td></td><td>
+    <a href=https://www.youtube.com/watch?v=mmQl6VGvX-c>[Knowledge Graphs and Entity Retrieval]</a><a href=https://www.youtube.com/watch?v=xQamYXhQSMw>[Mixed Initiative Search]</a>
+    <br><a href=https://dl.acm.org/doi/10.1145/3331184.3331264#>[Online Learning to Rank]</a>
+    <br><a href=https://www.youtube.com/watch?v=kfwyS-nzO7Y>[Personalization in Web Search]</a>
+    <br><a href=https://www.youtube.com/watch?v=6G-xo628CHU>[Query Understanding and Ranking]</a>
+    </td></tr>     
+<tr><td  colspan=4>Overview of Searching in Solr <a href=https://www.youtube.com/watch?v=YybhKtxu28s>[Video]</a><a href=https://lucene.apache.org/solr/guide/8_6/overview-of-searching-in-solr.html##overview-of-searching-in-solr>[Solr Guide]</a></td></tr>
+
 </table>
                     
         
@@ -112,7 +146,7 @@ Evaluation, Relevance Feedback, Query Expansion.
 <tr><td>Final Exam</td><td align=right>30%</td></tr>
 <tr><td>Mid-Semester Exam</td><td align=right>20%</td></tr>
 <tr><td>Assignments (4 * 10% each)</td><td align=right>40%</td></tr>
-<tr><td>Mini-Project</td><td align=right>10%</td></tr>
+<tr><td>Mini-Project (<a href=ir2020/slides/Mini_Project_Ideas.pdf>Ideas</a>)</td><td align=right>10%</td></tr>
 </table>
 </td></tr></table>
 <br>
