@@ -1,0 +1,99 @@
+SET SQL_SAFE_UPDATES = 0;
+
+select * from instructor;
+
+drop table instructor;
+
+create table instructor (ID INT, name varchar(20) not null, dept_name varchar(20), salary INT);
+
+-- Instructor
+delete from instructor;
+insert into instructor values ('10101', 'Srinivasan', 'Comp. Sci.', '65000');
+insert into instructor values ('12121', 'Wu', 'Finance', '90000');
+insert into instructor values ('15151', 'Mozart', 'Music', '40000');
+insert into instructor values ('22222', 'Einstein', 'Physics', '95000');
+insert into instructor values ('32343', 'El Said', 'History', '60000');
+insert into instructor values ('33456', 'Gold', 'Physics', '87000');
+insert into instructor values ('45565', 'Katz', 'Comp. Sci.', '75000');
+insert into instructor values ('58583', 'Califieri', 'History', '62000');
+insert into instructor values ('76543', 'Singh', 'Finance', '80000');
+insert into instructor values ('76766', 'Crick', 'Biology', '72000');
+insert into instructor values ('83821', 'Brandt', 'Comp. Sci.', '92000');
+insert into instructor values ('98345', 'Kim', 'Elec. Eng.', '80000');
+
+-- Find the highest salary
+select salary from instructor where salary not in (
+select distinct A.salary
+from instructor as A, instructor as B
+where A.salary < B.salary);
+
+-- An easier way
+select max(salary) from instructor;
+
+-- Union and Intersection
+select salary from instructor where ID = 10101
+UNION
+select salary from instructor where ID = 12121;
+
+select * from instructor where dept_name = 'Physics' AND salary IN
+(select salary from instructor where salary > 65000);
+
+-- In Oracle, you could use INTERSECT as 
+-- select salary from instructor where dept_name = 'Physics' INTERSECT select salary from instructor where salary > 65000
+
+-- group by
+-- WHich dept pays the most salary?
+select dept_name, sum(salary) AS A from instructor group by dept_name order by A desc;
+
+-- Refer https://www.w3schools.com/sql/sql_foreignkey.asp
+-- FK
+
+drop table Persons;
+drop table Orders;
+
+CREATE TABLE Persons (
+    PersonID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (PersonID)
+);
+
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
+
+ALTER TABLE Orders
+ADD CONSTRAINT FK_PersonOrder
+FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+
+ALTER TABLE Orders
+DROP FOREIGN KEY FK_PersonOrder;
+
+insert into Persons values ('1', 'Hansen', 'Ola', '30');
+insert into Persons values ('2', 'Svendson', 'Tove', '23');
+insert into Persons values ('3', 'Patterson', 'Kari', '20');
+
+select * from Persons;
+
+insert into Orders values ('1', '77895', '3');
+insert into Orders values ('2', '77896', '1');
+insert into Orders values ('3', '77897', '2');
+
+UPDATE Orders
+SET OrderNumber = 77898
+WHERE OrderID = 3;
+
+select * from Persons;
+
+CREATE INDEX FirstNameIndex ON Persons (FirstName(2));
+ALTER TABLE Persons DROP INDEX FirstNameIndex;
+SHOW INDEX FROM Persons;
+
+select * from instructor;
+
+
