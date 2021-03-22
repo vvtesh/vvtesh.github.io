@@ -1,0 +1,90 @@
+drop table grade;
+drop table registration;
+drop table course;
+drop table student;
+
+create table student (rollno varchar(9), sname varchar(40) not null, PRIMARY KEY (rollno));
+create table course (cid varchar(9), cname varchar(40) not null, primary key (cid));
+create table registration(rid int AUTO_INCREMENT, cid varchar(9), year int, semester varchar(7), rollno varchar(9), 
+	primary key (rid), 
+    foreign key (cid) references course(cid), 
+	foreign key (rollno) references student(rollno));
+
+create table grade (rollno varchar(9), rid int, lettergrade char(1), primary key (rid), 
+	foreign key (rollno) references student(rollno),
+    foreign key (rid) references registration(rid));
+
+insert into student values("MDS201905", "Aashish Ranjan");
+insert into student values("MDS201901", "StudA");
+insert into student values("MDS201902", "StudB");
+insert into student values("MDS201903", "StudC");
+insert into student values("MDS201904", "StudD");
+select * from student;
+
+insert into course values ("RSV", "RDBMS");
+insert into course values ("INFR", "Information Retrieval");
+select * from course;
+
+insert into registration (cid, year, semester, rollno) values ("RSV", 2019, "Oct-Nov", "MDS201901");
+insert into registration (cid, year, semester, rollno) values ("RSV", 2019, "Oct-Nov", "MDS201902");
+insert into registration (cid, year, semester, rollno) values ("RSV", 2019, "Oct-Nov", "MDS201903");
+insert into registration (cid, year, semester, rollno) values ("INFR", 2020, "Aug-Sep", "MDS201901");
+insert into registration (cid, year, semester, rollno) values ("INFR", 2020, "Aug-Sep", "MDS201902");
+insert into registration (cid, year, semester, rollno) values ("INFR", 2020, "Aug-Sep", "MDS201903");
+insert into registration (cid, year, semester, rollno) values ("RSV", 2019, "Oct-Nov", "MDS201904");
+
+select * from registration;
+
+insert into grade values ("MDS201901", 1, "A");
+insert into grade values ("MDS201902", 2, "F");
+insert into grade values ("MDS201903", 3, "B");
+insert into grade values ("MDS201901", 4, "A");
+insert into grade values ("MDS201902", 5, "A");
+insert into grade values ("MDS201903", 6, "F");
+insert into grade values ("MDS201904", 7, "B");
+select * from grade;
+
+# Write the SQL query to find the lettergrade that has the most number for students for the RSV course.
+#First find the count of lettergrades for RSV course
+Select g.lettergrade as l, count(*) as c from registration r, grade g where r.rid = g.rid and r.cid = "RSV" group by g.lettergrade;
+
+#We can use this as temporary table to pull the grade that has max c value.
+select l from 
+	(Select g.lettergrade as l, count(*) as c from registration r, grade g where r.rid = g.rid and r.cid = "RSV" group by g.lettergrade) as temp 
+where c =
+	(select max(c) as mc from 
+		(Select g.lettergrade as l, count(*) as c from registration r, grade g where r.rid = g.rid and r.cid = "RSV" group by g.lettergrade) as temp1
+	 );
+
+#Write the SQL query to find all the student names who failed in the Oct-Nov semester.	
+select sname from student s where s.rollno in (Select r.rollno from registration r, grade g where r.rid = g.rid and g.lettergrade = "F");    
+#or
+select sname from (Select r.rollno from registration r, grade g where r.rid = g.rid and g.lettergrade = "F") as temp, student where temp.rollno = student.rollno;
+
+#Write the SQL query to find the course id with maximum enrollments across all years.
+#First figure out registrations
+select cid, count(*) as c from registration group by cid;
+select max(c) from (
+			(select cid, count(*) as c from registration group by cid)
+        ) as temp1;
+        
+#Use the above to get the cid corresponding to max(c).
+select cid from
+	(select cid, count(*) as c from registration group by cid) as temp
+where c = 
+	(
+		select max(c) from (
+			(select count(*) as c from registration group by cid)
+        ) as temp1
+    );
+    
+#Write the SQL query to update the course id of RSV to SQL.
+insert into course values ("SQL", "RDBMS");
+update registration set cid="SQL" where cid="RSV";
+delete from course where cid="RSV";
+select * from course;
+select * from registration;
+
+#Register for the 2021 Feb-Mar semester offering of RSV2
+insert into course values ("RSV2", "RDBMS");
+insert into registration (cid, year, semester, rollno) values ("RSV2", 2021, "Feb-Mar", "MDS201905");
