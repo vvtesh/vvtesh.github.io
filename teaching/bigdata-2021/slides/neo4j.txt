@@ -1,0 +1,12 @@
+#Case insensitive.
+#Beware of ''.
+=====
+CREATE (p:Person{name:'Venkatesh'})-[:Teaches]->(c:Course{name:'BigData'})
+MATCH (p:Person{name:'Venkatesh'}) SET p.surname='Vinayakarao' RETURN p
+CREATE (p:Person {name:'Raj'})-[:StudentOf]->(o:Org{name:'CMI'})
+MATCH (a:Person),(b:Org) WHERE a.name = 'Venkatesh' AND b.name = 'CMI' CREATE (a)-[:FacultyAt]->(b) 
+CREATE (p:Person {name:'Isha'}) 
+MATCH (a:Person),(b:Course) WHERE a.name = 'Isha' and b.name = 'BigData' CREATE (a)-[:StudentOf]->(b)
+MATCH (n) RETURN n
+MATCH (n) DETACH DELETE n
+=====
