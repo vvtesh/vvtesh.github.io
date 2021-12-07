@@ -1,0 +1,66 @@
+#CREATE DATABASE example;
+use example;
+select * from data; #display the entire table
+
+#illustrating COUNT()
+select count(*) from data; # no. of entries in the table
+
+select distinct(job) from data; # display distinct jobs in the table
+select count(distinct job) from data; # count no. of distinct jobs in the table
+select count(distinct Job) from data where commission > 0; # count no. of distinct jobs with non-zero commission
+
+#illustrating SUM()
+select sum(salary) from data; # sum of salary of all employees
+select sum(salary) as tot_analyst_salary from data where job='analyst'; # total salary of all analysts
+select sum(salary) as tot_SE_salary from data where job='software engineer'; # total salary of all SEs
+
+#alternative to repetitive querries for each class : GROUP BY
+
+select sum(salary) from data group by job; #job-wise total salaries
+select sum(salary) as tot_salary from data group by job ;
+select sum(salary) as tot_salary from data group by job order by tot_salary desc;
+select sum(salary) as tot_salary from data group by job order by tot_salary desc limit 1 ; #job having the maximum total salary
+
+#illustrating AVG()
+select avg(salary) from data; # average salary of all employees
+select avg(salary + commission) as avg_payout from data; # average payout(salary+commission) of all employees
+select avg(salary + commission) as avg_payout from data group by job;
+
+#illustrating MAX()
+select max(salary) from data; # maximum salary of all
+select max(salary) from data group by job; # maximum salary in each job category
+
+# A trick!
+# Output all details of the employee getting the maximum salary
+
+select EmpCode, EmpFName, EmpLName, Job, Manager, HireDate, max(salary), Commission, DEPTCODE from data;
+
+# The right way
+select * from data where salary = (select max(salary) from data);
+
+#illustrating MIN()
+# All the MAX() examples by replacing 'MAX()' by 'MIN()' can be valid queries
+
+#Output the no. of employees in each dept.
+select deptcode, count(empcode) from data group by deptcode;
+
+#remove the 'null' dept code from the output
+select deptcode,count(empcode) from data group by deptcode where deptcode is not null;
+select deptcode,count(empcode) from data group by deptcode having deptcode is not null;
+
+#3 tricky queries to set your thinking mode on!
+
+#Q.1 Output the details of the employee getting the 2nd highest salary
+#Q.2 Output the details of the employee getting the 2nd highest salary and non-zero commission
+#Q.3 Output the number of employees in each job category in descending order
+
+SELECT * FROM data WHERE Salary = (SELECT MAX(Salary) FROM data where
+Salary != (SELECT MAX(Salary) FROM data));
+
+SELECT * FROM data WHERE Salary = (SELECT MAX(Salary) FROM data where
+Salary != (SELECT MAX(Salary) FROM data)) and commission > 0;
+
+SELECT COUNT(empcode), job
+FROM data 
+GROUP BY job
+ORDER BY COUNT(empcode) DESC;
