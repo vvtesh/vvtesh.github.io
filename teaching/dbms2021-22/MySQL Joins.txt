@@ -1,0 +1,72 @@
+MySQL Joins
+
+create table students(roll_num int, f_name varchar(20), grade varchar(2), results varchar(4)) ;
+insert into students values('01', 'Harry Potter', 'AB', 'pass') ;
+insert into students values(002, 'Ginny Weawsley', 'A', 'pass') ;
+insert into students values(3, 'Fred Weasley', 'F', 'fail') ;
+insert into students values(4, 'DRACO MALFOY', 'F', 'fail') ;
+select * from students;
+
+create table student_info(roll_num int, f_name varchar(20), course_ID varchar(8), teacher_ID varchar(8) ) ;
+insert into student_info values('01', 'Harry Potter', 'rdbms01', 'vv') ;
+insert into student_info values(002, 'Ginny Weawsley', 'rdbms01', 'vv') ;
+insert into student_info values(3, 'Fred Weasley', 'pdsp', 'mm') ;
+insert into student_info values(4, 'DRACO MALFOY', 'math', 'kssd') ;
+select * from student_info;
+
+
+create table courses(course_ID varchar(8), teacher_ID varchar(8), branch varchar(10));
+insert into courses values('rdbms01', 'vv', 'ds');
+insert into courses values('pdsp', 'mm', 'ds');
+insert into courses values('pdsp', 'mm', 'cs');
+insert into courses values('pbsr', 'sa', 'ds');
+insert into courses values('math', 'kssd', 'ds');
+insert into courses values('math', 'kssd', 'bm1');
+select * from courses;
+
+
+SELECT student_info.f_name, student_info.course_ID 
+FROM student_info 
+INNER JOIN courses
+ON student_info.course_ID = courses.course_ID;
+
+SELECT *
+FROM student_info 
+LEFT JOIN courses
+ON student_info.course_ID = courses.course_ID;
+
+SELECT *
+FROM student_info 
+RIGHT JOIN courses
+ON student_info.course_ID = courses.course_ID;
+
+SELECT a.roll_num , b.f_name
+FROM students a, students b
+WHERE a.roll_num < b.roll_num;
+
+SELECT * FROM student_info CROSS JOIN courses;
+
+
+create table course(course_id varchar(20), title varchar(20), dept_name varchar(20), credits INT);
+
+insert into course values ('BIO-301', 'Genetics', 'Biology', 4);
+insert into course values ('CS-190', 'Game Design', 'Comp Sc', 4);
+insert into course values ('CS-315', 'Robotics', 'Comp Sc', 2);
+
+
+create table prereq (course_id varchar(20), prereq_id varchar(20));
+
+insert into prereq values ('BIO-301', 'BIO-101');
+insert into prereq values ('CS-190', 'CS-101');
+insert into prereq values ('CS-347', 'CS-101');
+
+SELECT *
+FROM course 
+CROSS JOIN prereq;
+
+
+SELECT c.course_id, p.prereq_id, c.title, c.dept_name, c.credits FROM course c LEFT JOIN
+prereq p USING(course_id)
+UNION
+SELECT p.course_id, p.prereq_id, c.title, c.dept_name, c.credits FROM course c RIGHT
+JOIN prereq p USING(course_id);
